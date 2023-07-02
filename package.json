@@ -4,7 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "vercel-build": "next build"
   },
   "repository": {
     "type": "git",
