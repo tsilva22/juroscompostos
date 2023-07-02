@@ -1,0 +1,116 @@
+<!-- Autores: Thaís Oliveira & Johnathan Soares -->
+<!-- Data: 24/02/2023 -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Juros Compostos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body class="container">
+  <header>
+    <div>
+      <ion-icon name="calculator-outline"></ion-icon>
+      <h1>Calculadora de Juros Compostos</h1>
+    </div>
+    <p>Juros compostos são como uma bola de neve que vai crescendo cada vez mais. Vamos supor que você tem uma quantia de dinheiro guardada. Com os juros compostos, essa quantia vai aumentando ao longo do tempo. E o legal é que, à medida que o tempo passa, os juros são calculados não só em cima do dinheiro que você tinha, mas também em cima dos juros que você já ganhou antes. Isso faz com que seu dinheiro cresça ainda mais rápido. É como se os juros fizessem "filhinhos" e esses "filhinhos" também rendessem mais juros. Assim, quanto mais tempo você deixar o dinheiro aplicado, mais ele vai crescer. É uma forma bem legal de fazer seu dinheiro trabalhar por você e render mais!</p>
+  </header>
+  <main>
+    <section>
+      <div class="calculator">
+        <h2>Simulador de Juros Compostos</h2>
+        <form>
+          <div class="valor-inicial">
+            <label>Valor inicial</label>
+            <div class="input">
+              <span class="input-span">R$</span>
+              <input type="tel" id="principal" placeholder="0,00" min="0" step="any" lang="pt-BR" value tabindex="0" required="required" onkeyup="formatarValor(this)">
+            </div>
+          </div>
+          <div class="aporte-mensal">
+            <label>Aporte mensal</label>
+            <div class="input">
+              <span class="input-span">R$</span>
+              <input type="tel" id="contribution" placeholder="0,00" min="0" step="any" value tabindex="0" lang="pt-BR" onkeyup="formatarValor(this)">
+            </div>
+          </div>
+          <div class="taxa-juros">
+            <label>Taxa de juros</label>
+            <div class="input">
+              <span class="input-span">%</span>
+              <input type="tel" id="interest" placeholder="0,00" value tabindex="0" step="0.01" lang="pt-BR" required="required" inputmode="decimal" onkeyup="formatarTx(this)">
+              <button type="button" class="button1" data-toggle="tx-juros" aria-expanded="true">Selic Anual</button>
+              <div class="input-suspenso1">
+                <ul>
+                  <li value="Anual" class="input-suspenso1-taxa">Selic Anual</li>
+                  <li value="Mensal" class="input-suspenso1-taxa">Selic Mensal</li>
+                  <li value="Anual" class="input-suspenso1-taxa">CDI Anual</li>
+                  <li value="Mensal" class="input-suspenso1-taxa">CDI Mensal</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="periodo">
+            <label>Período em</label>
+            <div class="input">
+              <input type="tel" id="years" placeholder="0" min="0" lang="pt-BR" required="required">
+              <button type="button" class="button2" data-toggle="periodo" aria-expanded="true">Anos</button>
+              <div class="input-suspenso2">
+                <ul>
+                  <li value="Anos" class="input-suspenso2-periodo">Anos</li>
+                  <li value="Meses" class="input-suspenso2-periodo">Meses</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="div-btn-action">
+            <button id="calcular" class="btn-action">Calcular</button>
+            <button class="btn-action" type="clean" id="limpar">Limpar</button>
+          </div>
+        </form>
+        <div id="result">
+          <h1>Resultado</h1>
+          <div class="resultados">
+            <div class="result-container">
+              <span>Valor total investido</span>
+              <div class="resultado result-aporte"></div>
+            </div>
+            <div class="result-container">
+              <span>Total em juros</span>
+              <div class="resultado result-juros"></div>
+            </div>
+            <div class="result-container">
+              <span>Valor total final</span>
+              <div class="resultado result-total"></div>
+            </div>
+          </div>
+          <canvas id="pieChart"></canvas>
+          <canvas id="graphics"></canvas>
+          <div class="div-table">
+            <table id="table"></table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</body>
+
+</html>
